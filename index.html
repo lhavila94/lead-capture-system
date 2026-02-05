@@ -616,7 +616,13 @@ document.getElementById('leadForm').addEventListener('submit', function(e) {
   });
 
   // Simular envio (em produção, enviar via API)
-  console.log('Lead capturado:', formData);
+  fetch("https://cfc9-186-192-72-253.ngrok-free.app/webhook/lead-capture", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(formData)
+});
   
   const messageDiv = document.getElementById('formMessage');
   messageDiv.textContent = '✓ Obrigado! Seus dados foram recebidos com sucesso. Entraremos em contato em breve!';
