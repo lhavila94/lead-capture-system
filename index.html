@@ -1,12 +1,851 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Página Web</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfólio de Luis Henrique - Especialista em Automação, Bots e Desenvolvimento Web">
+<title>Luis Henrique - Automação & Desenvolvimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #2196f3;
+  --primary-dark: #1976d2;
+  --secondary: #00bcd4;
+  --dark: #f5f7fa;
+  --dark-light: #e3f2fd;
+  --light: #ffffff;
+  --text: #222831;
+  --shadow: rgba(33, 150, 243, 0.07);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Header fixo */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.7rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 12px var(--shadow);
+  border-bottom: none;
+}
+
+.header-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 1.2rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.2s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(120deg, var(--dark-light) 60%, var(--light) 100%);
+  color: var(--text);
+  padding: 7rem 1.5rem 4rem;
+  text-align: center;
+  margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(52,152,219,0.1)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.7rem;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: 2px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.hero .subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease 0.2s backwards;
+  color: var(--secondary);
+}
+
+.subtitle-item {
+  display: inline-block;
+  color: var(--primary-dark);
+  position: relative;
+  padding: 0 10px;
+  margin: 0 6px;
+  font-weight: 500;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+
+/* Efeito Automação - Efeito digital/circuito */
+/* Automação: leve brilho ciano animado por baixo do texto */
+.subtitle-item.automation {
+  color: #3498db;
+}
+.subtitle-item.automation::before {
+  content: '';
+  display: none;
+}
+.subtitle-item.automation:hover::before {
+  content: '\2699';
+  position: absolute;
+  left: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+  color: #00bcd4;
+  animation: spinGear 1.2s linear infinite;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 2px #00bcd4);
+  display: inline-block;
+}
+@keyframes spinGear {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+
+/* Efeito Bots - Efeito holográfico */
+/* Bots: leve efeito de pulsação azul/ciano */
+.subtitle-item.bots {
+  color: #4ECDC4;
+}
+.subtitle-item.bots::after {
+  content: '';
+  display: none;
+}
+.subtitle-item.bots:hover::after {
+  content: '\1F916'; /* robô unicode */
+  position: absolute;
+  right: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+  color: #00f7ff;
+  opacity: 0.8;
+  animation: pulseBot 1s infinite;
+  filter: drop-shadow(0 0 2px #00f7ff);
+  display: inline-block;
+}
+@keyframes pulseBot {
+  0%,100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-52%) scale(1.15); }
+}
+@keyframes bounceMsg {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-55%) scale(1.15); }
+}
+
+/* Efeito Desenvolvimento Web - Matrix effect */
+/* Desenvolvimento Web: efeito de digitação/cursor sutil */
+.subtitle-item.web {
+  color: #00bcd4;
+  position: relative;
+}
+.web-cursor {
+  display: none;
+}
+.subtitle-item.web:hover .web-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #00bcd4;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blinkWebCursor 1s steps(2) infinite;
+}
+@keyframes blinkWebCursor {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+.subtitle-item.web::before {
+  content: '';
+  display: none;
+}
+.subtitle-item.web:hover::before {
+  content: '<>';
+  position: absolute;
+  color: #00bcd4;
+  position: relative;
+}
+.subtitle-item.web::before {
+  content: '';
+  display: none;
+}
+.subtitle-item.web:hover::before {
+  content: '<>';
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #00bcd4;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 2px #00bcd4);
+  display: inline-block;
+}
+
+.subtitle-item.web:hover::after {
+  content: '</>';
+  position: absolute;
+  right: -19px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #00bcd4;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 2px #00bcd4);
+  display: inline-block;
+}
+  /* Removido bloco inválido, cursor agora é via .web-cursor */
+
+.subtitle-item.web:hover span.web-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #00bcd4;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blinkWebCursor 1s steps(2) infinite;
+}
+
+@keyframes blinkWebCursor {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Animações do Hero */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes popMessage {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { transform: translateY(-15px); opacity: 1; }
+  100% { transform: translateY(-30px); opacity: 0; }
+}
+
+@keyframes typing {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+  animation: fadeInUp 0.8s ease 0.4s backwards;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.6s backwards;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-dark);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  background: var(--light);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px var(--shadow);
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--primary);
+  margin: 0.7rem auto 0;
+  border-radius: 1px;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.skill-card {
+  background: var(--dark-light);
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: none;
+  transition: box-shadow 0.2s;
+}
+
+.skill-card:hover {
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.skill-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.skill-header h3 {
+  color: var(--primary-dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.skill-bar {
+  background: #e3f2fd;
+  border-radius: 6px;
+  height: 7px;
+  overflow: hidden;
+  margin-top: 0.7rem;
+}
+
+.skill-progress {
+  height: 100%;
+  background: var(--primary-dark);
+  border-radius: 6px;
+  width: 0;
+  transition: width 1s ease;
+}
+
+/* Projetos */
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.projeto {
+  background: var(--light);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: none;
+  transition: box-shadow 0.2s;
+}
+
+.projeto:hover {
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.projeto-header {
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 1rem;
+}
+
+.projeto-header h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.projeto-body {
+  padding: 1rem;
+}
+
+.projeto-body p {
+  margin-bottom: 0.7rem;
+  color: var(--text);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.7rem;
+}
+
+.tech-tag {
+  background: #e3f2fd;
+  color: var(--primary-dark);
+  padding: 0.2rem 0.7rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Sobre */
+.sobre-content {
+  background: var(--light);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: none;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.sobre-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+}
+
+/* Contato */
+.contato-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contato-card {
+  background: var(--light);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: none;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.contato-card:hover {
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.contato-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--primary-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin: 0 auto 0.5rem;
+  color: #fff;
+}
+
+.contato-card h3 {
+  margin-bottom: 0.3rem;
+  color: var(--primary-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.contato-card a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contato-card a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 0.9rem;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.5rem; }
+  .hero .subtitle { font-size: 0.9rem; }
+  .header-content { flex-direction: column; gap: 0.7rem; }
+  nav { display: flex; flex-wrap: wrap; justify-content: center; }
+  nav a { margin: 0.3rem; }
+  .section-title { font-size: 1.2rem; }
+}
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '744942815021064');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=744942815021064&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
-    <h1>Bem-vindo à Minha Página Web</h1>
-    <div>Olá</div>
+<header>
+  <div class="header-content">
+    <div class="logo">LH</div>
+    <nav>
+      <a href="#projetos">Projetos</a>
+      <a href="#skills">Skills</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+      <button id="theme-toggle" aria-label="Alternar tema" style="margin-left:1.5rem; background:transparent; border:none; color:#fff; font-size:1.3rem; cursor:pointer;">🌙</button>
+  </div>
+<script>
+// Detecta tema do sistema e aplica
+function setTheme(mode) {
+  const root = document.documentElement;
+  if (mode === 'dark') {
+    root.style.setProperty('--primary', '#2196f3');
+    root.style.setProperty('--primary-dark', '#90caf9');
+    root.style.setProperty('--secondary', '#00bcd4');
+    root.style.setProperty('--dark', '#181818');
+    root.style.setProperty('--dark-light', '#23272f');
+    root.style.setProperty('--light', '#181818');
+    root.style.setProperty('--text', '#f5f7fa');
+    root.style.setProperty('--shadow', 'rgba(0,0,0,0.12)');
+    document.getElementById('theme-toggle').textContent = '☀️';
+    document.body.classList.add('dark');
+  } else {
+    root.style.setProperty('--primary', '#2196f3');
+    root.style.setProperty('--primary-dark', '#1976d2');
+    root.style.setProperty('--secondary', '#00bcd4');
+    root.style.setProperty('--dark', '#f5f7fa');
+    root.style.setProperty('--dark-light', '#e3f2fd');
+    root.style.setProperty('--light', '#ffffff');
+    root.style.setProperty('--text', '#222831');
+    root.style.setProperty('--shadow', 'rgba(33,150,243,0.07)');
+    document.getElementById('theme-toggle').textContent = '🌙';
+    document.body.classList.remove('dark');
+  }
+  localStorage.setItem('theme', mode);
+}
+
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+// Inicializa tema
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme');
+  const systemTheme = getSystemTheme();
+  setTheme(savedTheme ? savedTheme : systemTheme);
+  document.getElementById('theme-toggle').addEventListener('click', function() {
+    const current = document.body.classList.contains('dark') ? 'dark' : 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+  // Atualiza se o sistema mudar
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) setTheme(e.matches ? 'dark' : 'light');
+  });
+});
+</script>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Luis Henrique</h1>
+    <p class="subtitle">
+      <span class="subtitle-item automation">Automação</span> | 
+      <span class="subtitle-item bots">Bots</span> | 
+      <span class="subtitle-item web">Desenvolvimento Web<span class="web-cursor"></span></span>
+    </p>
+    <p>Transformando processos manuais em soluções automatizadas. Especializado em criar ferramentas que aumentam produtividade e facilitam o dia a dia das equipes.</p>
+    <div class="cta-buttons">
+      <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+      <a href="#contato" class="btn btn-secondary">Entre em Contato</a>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-title">Habilidades</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">🤖</div>
+          <h3>Automação</h3>
+        </div>
+        <p>Desenvolvimento de bots para WhatsApp, Telegram e automações de processos repetitivos</p>
+        <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">💻</div>
+          <h3>Desenvolvimento Web</h3>
+        </div>
+        <p>Criação de sites, intranets e dashboards responsivos e funcionais</p>
+        <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">📊</div>
+          <h3>Excel & VBA</h3>
+        </div>
+        <p>Dashboards avançados, macros e automações em planilhas complexas</p>
+        <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">⚙️</div>
+          <h3>Node.js</h3>
+        </div>
+        <p>Backend, APIs e integrações com serviços externos</p>
+        <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos -->
+  <section id="projetos">
+    <h2 class="section-title">Projetos em Destaque</h2>
+    <div class="projetos-grid">
+      <div class="projeto">
+        <div class="projeto-header"><h3>Bot WhatsApp Automático</h3></div>
+        <div class="projeto-body">
+          <p>Sistema de automação para envio programado de mensagens com dados extraídos de relatórios Excel, reduzindo tempo de trabalho manual em 70%.</p>
+          <p><strong>Resultados:</strong> 500+ mensagens/dia processadas automaticamente</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Puppeteer</span>
+            <span class="tech-tag">Excel</span>
+          </div>
+        </div>
+      </div>
+      <div class="projeto">
+        <div class="projeto-header"><h3>Dashboard Executivo Excel</h3></div>
+        <div class="projeto-body">
+          <p>Criação de dashboards interativos com gráficos dinâmicos e KPIs em tempo real para acompanhamento de métricas operacionais.</p>
+          <p><strong>Resultados:</strong> Visibilidade de dados melhorada em 85%</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">VBA</span>
+            <span class="tech-tag">Power Query</span>
+          </div>
+        </div>
+      </div>
+      <div class="projeto">
+        <div class="projeto-header"><h3>Intranet Corporativa</h3></div>
+        <div class="projeto-body">
+          <p>Portal interno centralizado para equipes de vendas acessarem documentos, ferramentas e recursos de forma rápida e organizada.</p>
+          <p><strong>Resultados:</strong> 40% de redução no tempo de busca de informações</p>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <h2 class="section-title">Sobre Mim</h2>
+    <div class="sobre-content">
+      <p>Sou apaixonado por encontrar soluções tecnológicas para problemas do dia a dia. Com experiência em automação de processos, desenvolvimento de bots e criação de ferramentas internas, busco sempre transformar tarefas repetitivas em sistemas eficientes.</p>
+      <p>Minha abordagem combina conhecimento técnico com entendimento das necessidades reais dos usuários, resultando em soluções práticas que realmente fazem diferença no cotidiano das equipes.</p>
+      <p>Atualmente, estou focado em expandir meus conhecimentos em desenvolvimento web full-stack e inteligência artificial aplicada à automação.</p>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <h2 class="section-title">Vamos Conversar?</h2>
+    <div class="contato-grid">
+      <div class="contato-card">
+        <div class="contato-icon">📧</div>
+        <h3>Email</h3>
+        <a href="mailto:lhavila@outlook.com.br">lhavila@outlook.com.br</a>
+      </div>
+      <div class="contato-card">
+        <div class="contato-icon">💼</div>
+        <h3>LinkedIn</h3>
+        <a href="https://linkedin.com/in/lhavila" target="_blank">linkedin.com/in/lhavila</a>
+      </div>
+      <div class="contato-card">
+        <div class="contato-icon">💻</div>
+        <h3>GitHub</h3>
+        <a href="https://github.com/lhavila94" target="_blank">github.com/lhavila94</a>
+      </div>
+      <div class="contato-card">
+        <div class="contato-icon">📱</div>
+        <h3>WhatsApp</h3>
+        <a href="https://wa.me/5551998964691" target="_blank">Iniciar conversa</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Luis Henrique - Assistech LH. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+// Smooth scroll com offset para header fixo
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    const offset = 80;
+    const targetPosition = target.offsetTop - offset;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+  });
+});
+
+// Animação das barras de progresso ao entrar na viewport
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      bar.style.width = bar.getAttribute('data-width');
+      observer.unobserve(bar); // dispara apenas uma vez
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.skill-progress').forEach(bar => observer.observe(bar));
+</script>
 </body>
 </html>
