@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfólio de Luis Henrique - Especialista em Automação, Bots e Desenvolvimento Web">
-<title>Luis Henrique - Automação & Desenvolvimento</title>
+<meta name="description" content="Capture leads e cresça seu negócio com soluções de automação inteligente">
+<title>Capture Leads - Automação para Seu Negócio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
 <style>
 :root {
   --primary: #2196f3;
   --primary-dark: #1976d2;
   --secondary: #00bcd4;
+  --success: #4caf50;
   --dark: #f5f7fa;
   --dark-light: #e3f2fd;
   --light: #ffffff;
@@ -36,17 +37,16 @@ body {
 header {
   background: var(--primary);
   color: #fff;
-  padding: 0.7rem 0;
+  padding: 1rem 0;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 12px var(--shadow);
-  border-bottom: none;
 }
 
 .header-content {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
@@ -56,45 +56,32 @@ header {
 
 .logo {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #fff;
 }
 
 nav a {
   color: #fff;
-  margin-left: 1.2rem;
+  margin-left: 2rem;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  transition: color 0.2s;
-  position: relative;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
 }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: width 0.2s;
-}
-
-nav a:hover::after {
-  width: 100%;
+nav a:hover {
+  opacity: 0.8;
 }
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(120deg, var(--dark-light) 60%, var(--light) 100%);
-  color: var(--text);
-  padding: 7rem 1.5rem 4rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  padding: 8rem 1.5rem 4rem;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 70px;
   position: relative;
   overflow: hidden;
 }
@@ -106,12 +93,12 @@ nav a:hover::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(52,152,219,0.1)"/></svg>');
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
   opacity: 0.3;
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -119,459 +106,279 @@ nav a:hover::after {
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.7rem;
-  margin-bottom: 0.7rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
   font-weight: 700;
-  color: var(--primary-dark);
-  letter-spacing: 2px;
-  animation: fadeInUp 0.8s ease;
+  letter-spacing: 1px;
+  animation: fadeInDown 0.8s ease;
 }
 
 .hero .subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
   animation: fadeInUp 0.8s ease 0.2s backwards;
-  color: var(--secondary);
-}
-
-.subtitle-item {
-  display: inline-block;
-  color: var(--primary-dark);
-  position: relative;
-  padding: 0 10px;
-  margin: 0 6px;
-  font-weight: 500;
-  font-size: 1em;
-  transition: color 0.2s;
-}
-
-/* Efeito Automação - Efeito digital/circuito */
-/* Automação: leve brilho ciano animado por baixo do texto */
-.subtitle-item.automation {
-  color: #3498db;
-}
-.subtitle-item.automation::before {
-  content: '';
-  display: none;
-}
-.subtitle-item.automation:hover::before {
-  content: '\2699';
-  position: absolute;
-  left: -22px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.1em;
-  color: #00bcd4;
-  animation: spinGear 1.2s linear infinite;
-  opacity: 0.8;
-  filter: drop-shadow(0 0 2px #00bcd4);
-  display: inline-block;
-}
-@keyframes spinGear {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  100% { transform: translateY(-50%) rotate(360deg); }
-}
-
-
-/* Efeito Bots - Efeito holográfico */
-/* Bots: leve efeito de pulsação azul/ciano */
-.subtitle-item.bots {
-  color: #4ECDC4;
-}
-.subtitle-item.bots::after {
-  content: '';
-  display: none;
-}
-.subtitle-item.bots:hover::after {
-  content: '\1F916'; /* robô unicode */
-  position: absolute;
-  right: -22px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.1em;
-  color: #00f7ff;
-  opacity: 0.8;
-  animation: pulseBot 1s infinite;
-  filter: drop-shadow(0 0 2px #00f7ff);
-  display: inline-block;
-}
-@keyframes pulseBot {
-  0%,100% { transform: translateY(-50%) scale(1); }
-  50% { transform: translateY(-52%) scale(1.15); }
-}
-@keyframes bounceMsg {
-  0%, 100% { transform: translateY(-50%) scale(1); }
-  50% { transform: translateY(-55%) scale(1.15); }
-}
-
-/* Efeito Desenvolvimento Web - Matrix effect */
-/* Desenvolvimento Web: efeito de digitação/cursor sutil */
-.subtitle-item.web {
-  color: #00bcd4;
-  position: relative;
-}
-.web-cursor {
-  display: none;
-}
-.subtitle-item.web:hover .web-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background: #00bcd4;
-  margin-left: 2px;
-  vertical-align: middle;
-  animation: blinkWebCursor 1s steps(2) infinite;
-}
-@keyframes blinkWebCursor {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-.subtitle-item.web::before {
-  content: '';
-  display: none;
-}
-.subtitle-item.web:hover::before {
-  content: '<>';
-  position: absolute;
-  color: #00bcd4;
-  position: relative;
-}
-.subtitle-item.web::before {
-  content: '';
-  display: none;
-}
-.subtitle-item.web:hover::before {
-  content: '<>';
-  position: absolute;
-  left: -13px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1em;
-  color: #00bcd4;
-  opacity: 0.7;
-  filter: drop-shadow(0 0 2px #00bcd4);
-  display: inline-block;
-}
-
-.subtitle-item.web:hover::after {
-  content: '</>';
-  position: absolute;
-  right: -19px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1em;
-  color: #00bcd4;
-  opacity: 0.7;
-  filter: drop-shadow(0 0 2px #00bcd4);
-  display: inline-block;
-}
-  /* Removido bloco inválido, cursor agora é via .web-cursor */
-
-.subtitle-item.web:hover span.web-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background: #00bcd4;
-  margin-left: 2px;
-  vertical-align: middle;
-  animation: blinkWebCursor 1s steps(2) infinite;
-}
-
-@keyframes blinkWebCursor {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-/* Animações do Hero */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes popMessage {
-  0% { transform: translateY(0); opacity: 0; }
-  50% { transform: translateY(-15px); opacity: 1; }
-  100% { transform: translateY(-30px); opacity: 0; }
-}
-
-@keyframes typing {
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-.hero p {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  opacity: 0.85;
-  animation: fadeInUp 0.8s ease 0.4s backwards;
+  opacity: 0.95;
+  line-height: 1.6;
 }
 
 .cta-buttons {
   display: flex;
-  gap: 0.7rem;
+  gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  animation: fadeInUp 0.8s ease 0.6s backwards;
+  animation: fadeInUp 0.8s ease 0.4s backwards;
+  margin-bottom: 2rem;
 }
 
 .btn {
-  padding: 0.7rem 1.5rem;
+  padding: 0.9rem 2rem;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: all 0.3s;
   display: inline-block;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: var(--success);
   color: #fff;
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
-  color: #fff;
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--primary-dark);
-  border: 1px solid var(--primary-dark);
+  color: #fff;
+  border: 2px solid #fff;
 }
 
 .btn-secondary:hover {
-  background: var(--primary-dark);
-  color: #fff;
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
 }
 
-/* Container */
-.container {
-  max-width: 900px;
+/* Seção de Benefícios */
+.benefits {
+  padding: 4rem 1.5rem;
+  background: var(--dark);
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
-  background: var(--light);
-  border-radius: 12px;
-  box-shadow: 0 2px 16px var(--shadow);
 }
 
-section {
-  margin-bottom: 3rem;
-}
-
-.section-title {
+.benefits h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.7rem;
-  margin-bottom: 2rem;
+  font-size: 2.2rem;
   text-align: center;
-  position: relative;
+  margin-bottom: 3rem;
   color: var(--primary);
   font-weight: 700;
 }
 
-.section-title::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--primary);
-  margin: 0.7rem auto 0;
-  border-radius: 1px;
-}
-
-/* Skills */
-.skills-grid {
+.benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-.skill-card {
-  background: var(--dark-light);
-  padding: 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px var(--shadow);
-  border: none;
-  transition: box-shadow 0.2s;
+.benefit-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px var(--shadow);
+  text-align: center;
+  transition: transform 0.3s;
 }
 
-.skill-card:hover {
-  box-shadow: 0 4px 16px var(--shadow);
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 24px var(--shadow);
 }
 
-.skill-header {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
+.benefit-icon {
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.skill-icon {
-  width: 36px;
-  height: 36px;
-  background: var(--primary);
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: var(--text);
-}
-
-.skill-header h3 {
+.benefit-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
   color: var(--primary-dark);
-  font-size: 1.1rem;
   font-weight: 600;
 }
 
-.skill-bar {
-  background: #e3f2fd;
-  border-radius: 6px;
-  height: 7px;
-  overflow: hidden;
-  margin-top: 0.7rem;
+.benefit-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.skill-progress {
-  height: 100%;
-  background: var(--primary-dark);
-  border-radius: 6px;
-  width: 0;
-  transition: width 1s ease;
-}
-
-/* Projetos */
-.projetos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.2rem;
-}
-
-.projeto {
-  background: var(--light);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px var(--shadow);
-  border: none;
-  transition: box-shadow 0.2s;
-}
-
-.projeto:hover {
-  box-shadow: 0 4px 16px var(--shadow);
-}
-
-.projeto-header {
-  background: var(--primary-dark);
-  color: #fff;
-  padding: 1rem;
-}
-
-.projeto-header h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-  font-weight: 600;
-}
-
-.projeto-body {
-  padding: 1rem;
-}
-
-.projeto-body p {
-  margin-bottom: 0.7rem;
-  color: var(--text);
-}
-
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-top: 0.7rem;
-}
-
-.tech-tag {
-  background: #e3f2fd;
-  color: var(--primary-dark);
-  padding: 0.2rem 0.7rem;
-  border-radius: 10px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-/* Sobre */
-.sobre-content {
-  background: var(--light);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px var(--shadow);
-  border: none;
-  max-width: 700px;
+/* Formulário de Captura */
+.capture-section {
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, var(--dark-light) 0%, #f0f8ff 100%);
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.sobre-content p {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text);
-  margin-bottom: 0.7rem;
-}
-
-/* Contato */
-.contato-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
+.capture-wrapper {
   max-width: 700px;
   margin: 0 auto;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px var(--shadow);
 }
 
-.contato-card {
-  background: var(--light);
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px var(--shadow);
-  border: none;
+.capture-wrapper h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
   text-align: center;
-  transition: box-shadow 0.2s;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  font-weight: 700;
 }
 
-.contato-card:hover {
-  box-shadow: 0 4px 16px var(--shadow);
+.capture-wrapper .subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
 }
 
-.contato-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--primary-dark);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  margin: 0 auto 0.5rem;
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1rem;
+  background: var(--success);
   color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
 }
 
-.contato-card h3 {
-  margin-bottom: 0.3rem;
-  color: var(--primary-dark);
-  font-size: 1rem;
+.form-submit:hover {
+  background: #45a049;
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+}
+
+.form-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: none;
+  text-align: center;
   font-weight: 600;
 }
 
-.contato-card a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
+.form-message.success {
+  background: #d4edda;
+  color: #155724;
+  display: block;
 }
 
-.contato-card a:hover {
-  text-decoration: underline;
+.form-message.error {
+  background: #f8d7da;
+  color: #721c24;
+  display: block;
+}
+
+/* Social Proof */
+.social-proof {
+  padding: 3rem 1.5rem;
+  background: #fff;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-proof h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.stat-item {
+  padding: 2rem;
+  background: var(--dark);
+  border-radius: 12px;
+}
+
+.stat-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: #666;
+  font-weight: 600;
 }
 
 /* Footer */
@@ -579,24 +386,56 @@ footer {
   background: var(--primary);
   color: #fff;
   text-align: center;
-  padding: 1.2rem;
+  padding: 2rem;
   font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 /* Animações */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 1.5rem; }
-  .hero .subtitle { font-size: 0.9rem; }
-  .header-content { flex-direction: column; gap: 0.7rem; }
-  nav { display: flex; flex-wrap: wrap; justify-content: center; }
-  nav a { margin: 0.3rem; }
-  .section-title { font-size: 1.2rem; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero .subtitle { font-size: 1rem; }
+  .hero { padding: 6rem 1rem 2rem; margin-top: 60px; }
+  nav a { margin-left: 1rem; font-size: 0.85rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .capture-wrapper { padding: 1.5rem; }
+  .cta-buttons { flex-direction: column; }
+  .btn { width: 100%; }
+  .benefits h2 { font-size: 1.6rem; }
+  .capture-wrapper h2 { font-size: 1.5rem; }
+  .stat-number { font-size: 2rem; }
 }
 </style>
 
@@ -621,231 +460,190 @@ src="https://www.facebook.com/tr?id=744942815021064&ev=PageView&noscript=1"
 <body>
 <header>
   <div class="header-content">
-    <div class="logo">LH</div>
+    <div class="logo">LEADS.PRO</div>
     <nav>
-      <a href="#projetos">Projetos</a>
-      <a href="#skills">Skills</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#captura">Contato</a>
     </nav>
-      <button id="theme-toggle" aria-label="Alternar tema" style="margin-left:1.5rem; background:transparent; border:none; color:#fff; font-size:1.3rem; cursor:pointer;">🌙</button>
   </div>
-<script>
-// Detecta tema do sistema e aplica
-function setTheme(mode) {
-  const root = document.documentElement;
-  if (mode === 'dark') {
-    root.style.setProperty('--primary', '#2196f3');
-    root.style.setProperty('--primary-dark', '#90caf9');
-    root.style.setProperty('--secondary', '#00bcd4');
-    root.style.setProperty('--dark', '#181818');
-    root.style.setProperty('--dark-light', '#23272f');
-    root.style.setProperty('--light', '#181818');
-    root.style.setProperty('--text', '#f5f7fa');
-    root.style.setProperty('--shadow', 'rgba(0,0,0,0.12)');
-    document.getElementById('theme-toggle').textContent = '☀️';
-    document.body.classList.add('dark');
-  } else {
-    root.style.setProperty('--primary', '#2196f3');
-    root.style.setProperty('--primary-dark', '#1976d2');
-    root.style.setProperty('--secondary', '#00bcd4');
-    root.style.setProperty('--dark', '#f5f7fa');
-    root.style.setProperty('--dark-light', '#e3f2fd');
-    root.style.setProperty('--light', '#ffffff');
-    root.style.setProperty('--text', '#222831');
-    root.style.setProperty('--shadow', 'rgba(33,150,243,0.07)');
-    document.getElementById('theme-toggle').textContent = '🌙';
-    document.body.classList.remove('dark');
-  }
-  localStorage.setItem('theme', mode);
-}
-
-function getSystemTheme() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
-// Inicializa tema
-document.addEventListener('DOMContentLoaded', function() {
-  const savedTheme = localStorage.getItem('theme');
-  const systemTheme = getSystemTheme();
-  setTheme(savedTheme ? savedTheme : systemTheme);
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    const current = document.body.classList.contains('dark') ? 'dark' : 'light';
-    setTheme(current === 'dark' ? 'light' : 'dark');
-  });
-  // Atualiza se o sistema mudar
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem('theme')) setTheme(e.matches ? 'dark' : 'light');
-  });
-});
-</script>
 </header>
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Luis Henrique</h1>
-    <p class="subtitle">
-      <span class="subtitle-item automation">Automação</span> | 
-      <span class="subtitle-item bots">Bots</span> | 
-      <span class="subtitle-item web">Desenvolvimento Web<span class="web-cursor"></span></span>
-    </p>
-    <p>Transformando processos manuais em soluções automatizadas. Especializado em criar ferramentas que aumentam produtividade e facilitam o dia a dia das equipes.</p>
+    <h1>Capture Mais Leads</h1>
+    <p class="subtitle">Transforme visitantes em clientes com formulários inteligentes e automação de respostas</p>
     <div class="cta-buttons">
-      <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
-      <a href="#contato" class="btn btn-secondary">Entre em Contato</a>
+      <button class="btn btn-primary" onclick="document.getElementById('captura').scrollIntoView({behavior: 'smooth'})">Começar Agora</button>
+      <button class="btn btn-secondary" onclick="alert('Conheça nossas soluções')">Saiba Mais</button>
     </div>
   </div>
 </section>
 
-<main class="container">
-  <!-- Skills -->
-  <section id="skills">
-    <h2 class="section-title">Habilidades</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-header">
-          <div class="skill-icon">🤖</div>
-          <h3>Automação</h3>
-        </div>
-        <p>Desenvolvimento de bots para WhatsApp, Telegram e automações de processos repetitivos</p>
-        <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-header">
-          <div class="skill-icon">💻</div>
-          <h3>Desenvolvimento Web</h3>
-        </div>
-        <p>Criação de sites, intranets e dashboards responsivos e funcionais</p>
-        <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-header">
-          <div class="skill-icon">📊</div>
-          <h3>Excel & VBA</h3>
-        </div>
-        <p>Dashboards avançados, macros e automações em planilhas complexas</p>
-        <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-header">
-          <div class="skill-icon">⚙️</div>
-          <h3>Node.js</h3>
-        </div>
-        <p>Backend, APIs e integrações com serviços externos</p>
-        <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
-      </div>
+<section class="benefits" id="beneficios">
+  <h2>Por Que Escolher Nosso Sistema?</h2>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">⚡</div>
+      <h3>Rápido & Eficiente</h3>
+      <p>Capture leads em segundos com formulários otimizados e respostas automáticas instantâneas</p>
     </div>
-  </section>
+    <div class="benefit-card">
+      <div class="benefit-icon">🎯</div>
+      <h3>Altamente Segmentado</h3>
+      <p>Organize seus leads por interesse, comportamento e perfil para estratégias personalizadas</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📊</div>
+      <h3>Análise em Tempo Real</h3>
+      <p>Acompanhe conversões, taxa de resposta e ROI com relatórios detalhados</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🔄</div>
+      <h3>Automação Completa</h3>
+      <p>Integre com CRM, email marketing e WhatsApp para fluxo de trabalho automatizado</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🛡️</div>
+      <h3>100% Seguro</h3>
+      <p>Dados dos clientes protegidos com encriptação de nível enterprise</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💬</div>
+      <h3>Suporte 24/7</h3>
+      <p>Equipe dedicada pronta para ajudar no crescimento do seu negócio</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Projetos -->
-  <section id="projetos">
-    <h2 class="section-title">Projetos em Destaque</h2>
-    <div class="projetos-grid">
-      <div class="projeto">
-        <div class="projeto-header"><h3>Bot WhatsApp Automático</h3></div>
-        <div class="projeto-body">
-          <p>Sistema de automação para envio programado de mensagens com dados extraídos de relatórios Excel, reduzindo tempo de trabalho manual em 70%.</p>
-          <p><strong>Resultados:</strong> 500+ mensagens/dia processadas automaticamente</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Puppeteer</span>
-            <span class="tech-tag">Excel</span>
-          </div>
-        </div>
+<section class="capture-section" id="captura">
+  <div class="capture-wrapper">
+    <h2>Receba Seus Primeiros Leads</h2>
+    <p class="subtitle">Preencha o formulário para ativar sua conta e começar a capturar leads hoje</p>
+    
+    <div class="form-message" id="formMessage"></div>
+    
+    <form id="leadForm">
+      <div class="form-group">
+        <label for="nome">Nome Completo *</label>
+        <input type="text" id="nome" name="nome" required>
       </div>
-      <div class="projeto">
-        <div class="projeto-header"><h3>Dashboard Executivo Excel</h3></div>
-        <div class="projeto-body">
-          <p>Criação de dashboards interativos com gráficos dinâmicos e KPIs em tempo real para acompanhamento de métricas operacionais.</p>
-          <p><strong>Resultados:</strong> Visibilidade de dados melhorada em 85%</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Excel</span>
-            <span class="tech-tag">VBA</span>
-            <span class="tech-tag">Power Query</span>
-          </div>
-        </div>
-      </div>
-      <div class="projeto">
-        <div class="projeto-header"><h3>Intranet Corporativa</h3></div>
-        <div class="projeto-body">
-          <p>Portal interno centralizado para equipes de vendas acessarem documentos, ferramentas e recursos de forma rápida e organizada.</p>
-          <p><strong>Resultados:</strong> 40% de redução no tempo de busca de informações</p>
-          <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Sobre -->
-  <section id="sobre">
-    <h2 class="section-title">Sobre Mim</h2>
-    <div class="sobre-content">
-      <p>Sou apaixonado por encontrar soluções tecnológicas para problemas do dia a dia. Com experiência em automação de processos, desenvolvimento de bots e criação de ferramentas internas, busco sempre transformar tarefas repetitivas em sistemas eficientes.</p>
-      <p>Minha abordagem combina conhecimento técnico com entendimento das necessidades reais dos usuários, resultando em soluções práticas que realmente fazem diferença no cotidiano das equipes.</p>
-      <p>Atualmente, estou focado em expandir meus conhecimentos em desenvolvimento web full-stack e inteligência artificial aplicada à automação.</p>
-    </div>
-  </section>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone *</label>
+          <input type="tel" id="telefone" name="telefone" required>
+        </div>
+      </div>
 
-  <!-- Contato -->
-  <section id="contato">
-    <h2 class="section-title">Vamos Conversar?</h2>
-    <div class="contato-grid">
-      <div class="contato-card">
-        <div class="contato-icon">📧</div>
-        <h3>Email</h3>
-        <a href="mailto:lhavila@outlook.com.br">lhavila@outlook.com.br</a>
+      <div class="form-group">
+        <label for="empresa">Empresa</label>
+        <input type="text" id="empresa" name="empresa">
       </div>
-      <div class="contato-card">
-        <div class="contato-icon">💼</div>
-        <h3>LinkedIn</h3>
-        <a href="https://linkedin.com/in/lhavila" target="_blank">linkedin.com/in/lhavila</a>
+
+      <div class="form-group">
+        <label for="interesse">Interesse Principal *</label>
+        <select name="interesse" id="interesse" required style="width: 100%; padding: 0.9rem 1rem; border: 2px solid #e0e0e0; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem;">
+          <option value="">Selecione uma opção</option>
+          <option value="automacao">Automação de Processos</option>
+          <option value="captura-leads">Captura de Leads</option>
+          <option value="email-marketing">Email Marketing</option>
+          <option value="whatsapp">Integração WhatsApp</option>
+          <option value="crm">Integração CRM</option>
+          <option value="outro">Outro</option>
+        </select>
       </div>
-      <div class="contato-card">
-        <div class="contato-icon">💻</div>
-        <h3>GitHub</h3>
-        <a href="https://github.com/lhavila94" target="_blank">github.com/lhavila94</a>
+
+      <div class="form-group">
+        <label for="mensagem">Mensagem (Opcional)</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Conte-nos mais sobre seu negócio..."></textarea>
       </div>
-      <div class="contato-card">
-        <div class="contato-icon">📱</div>
-        <h3>WhatsApp</h3>
-        <a href="https://wa.me/5551998964691" target="_blank">Iniciar conversa</a>
-      </div>
+
+      <button type="submit" class="form-submit">Enviar Dados</button>
+    </form>
+  </div>
+</section>
+
+<section class="social-proof">
+  <h2>Nossos Resultados Falam por Si</h2>
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-number">2.500+</div>
+      <div class="stat-label">Leads Capturados</div>
     </div>
-  </section>
-</main>
+    <div class="stat-item">
+      <div class="stat-number">150+</div>
+      <div class="stat-label">Empresas Ativas</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">85%</div>
+      <div class="stat-label">Taxa de Conversão</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">24h</div>
+      <div class="stat-label">Suporte Disponível</div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <p>&copy; 2025 Luis Henrique - Assistech LH. Todos os direitos reservados.</p>
+  <p>&copy; 2026 Leads.Pro - Captura Inteligente de Leads. <a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
 </footer>
 
 <script>
-// Smooth scroll com offset para header fixo
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    const offset = 80;
-    const targetPosition = target.offsetTop - offset;
-    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+// Validação e envio do formulário
+document.getElementById('leadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = {
+    nome: document.getElementById('nome').value,
+    email: document.getElementById('email').value,
+    telefone: document.getElementById('telefone').value,
+    empresa: document.getElementById('empresa').value,
+    interesse: document.getElementById('interesse').value,
+    mensagem: document.getElementById('mensagem').value,
+    timestamp: new Date().toLocaleString('pt-BR')
+  };
+
+  // Rastrear conversão no Meta Pixel
+  fbq('track', 'Lead', {
+    value: 1,
+    currency: 'BRL',
+    content_name: formData.interesse
   });
+
+  // Simular envio (em produção, enviar via API)
+  console.log('Lead capturado:', formData);
+  
+  const messageDiv = document.getElementById('formMessage');
+  messageDiv.textContent = '✓ Obrigado! Seus dados foram recebidos com sucesso. Entraremos em contato em breve!';
+  messageDiv.classList.add('success');
+  messageDiv.classList.remove('error');
+  
+  // Limpar formulário
+  this.reset();
+  
+  // Esconder mensagem após 5 segundos
+  setTimeout(() => {
+    messageDiv.style.display = 'none';
+  }, 5000);
 });
 
-// Animação das barras de progresso ao entrar na viewport
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const bar = entry.target;
-      bar.style.width = bar.getAttribute('data-width');
-      observer.unobserve(bar); // dispara apenas uma vez
+// Smooth scroll para links internos
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    if (this.getAttribute('href') !== '#') {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.skill-progress').forEach(bar => observer.observe(bar));
+});
 </script>
 </body>
 </html>
