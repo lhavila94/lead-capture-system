@@ -617,12 +617,19 @@ document.getElementById('leadForm').addEventListener('submit', function(e) {
   });
 
   // Simular envio (em produção, enviar via API)
-  fetch("https://cfc9-186-192-72-253.ngrok-free.app/webhook/lead-capture", {
+fetch(`${APP_CONFIG.API_URL}/webhook/lead-capture`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
   body: JSON.stringify(formData)
+})
+.then(response => {
+  if (!response.ok) throw new Error("Erro ao enviar dados");
+  return response.json().catch(() => null);
+})
+.catch(error => {
+  console.error("Erro no envio:", error);
 });
   
   const messageDiv = document.getElementById('formMessage');
