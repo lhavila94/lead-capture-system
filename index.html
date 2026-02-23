@@ -202,13 +202,21 @@
     }
 
     .form-group {
+<<<<<<< Updated upstream
       margin-bottom: 22px;
+=======
+      margin-bottom: 12px;
+>>>>>>> Stashed changes
       display: flex;
       flex-direction: column;
     }
 
     .form-group label {
+<<<<<<< Updated upstream
       margin-bottom: 10px;
+=======
+      margin-bottom: 6px;
+>>>>>>> Stashed changes
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.6px;
@@ -217,7 +225,11 @@
     }
 
     .form-group input {
+<<<<<<< Updated upstream
       padding: 13px 14px;
+=======
+      padding: 10px 12px;
+>>>>>>> Stashed changes
       border: 2px solid #e2e8f0;
       border-radius: 10px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -247,9 +259,12 @@
 
     .form-section {
       display: none;
+<<<<<<< Updated upstream
       margin-top: 35px;
       padding-top: 35px;
       border-top: 2px solid #e2e8f0;
+=======
+>>>>>>> Stashed changes
       animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
@@ -262,7 +277,11 @@
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       padding: 15px;
+<<<<<<< Updated upstream
       margin-top: 25px;
+=======
+      margin-top: 16px;
+>>>>>>> Stashed changes
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.6px;
@@ -327,6 +346,7 @@
 
     <div id="message" class="message"></div>
 
+<<<<<<< Updated upstream
     <div class="input-area">
       <label for="textarea">Cole o texto aqui:</label>
       <textarea id="textarea" placeholder="👤 Nome: Romoaldo Dos Santos
@@ -341,6 +361,17 @@
       <button class="btn-clear" onclick="limpar()">Limpar</button>
     </div>
 
+=======
+    <div id="inputArea" class="input-area">
+      <label for="textarea">Cole o texto aqui:</label>
+      <textarea id="textarea" placeholder="👤 Nome: Romoaldo Dos Santos
+🎂 Data de nascimento: 01/12/2025
+📄 CPF: 669.221.939-62
+📱 WhatsApp: (12) 34567-8910
+⏰ Tempo de trabalho: 18 a 24 meses"></textarea>
+    </div>
+
+>>>>>>> Stashed changes
     <div id="formSection" class="form-section">
       <div class="form-group">
         <label for="nome">Nome:</label>
@@ -364,9 +395,51 @@
       </div>
       <button class="btn-send" onclick="enviarDados()">Enviar para Sheet 🚀</button>
     </div>
+<<<<<<< Updated upstream
   </div>
 
   <script>
+=======
+
+    <div class="buttons">
+      <button class="btn-process" onclick="processarTexto()">Processar</button>
+      <button class="btn-process" onclick="preenchimentoManual()">Preenchimento Manual</button>
+      <button class="btn-clear" onclick="limpar()">Limpar</button>
+    </div>
+  </div>
+
+  <script>
+    function preenchimentoManual() {
+      // Esconder textarea
+      document.getElementById('inputArea').style.display = 'none';
+
+      // Limpar campos e mostrar formulário vazio
+      document.getElementById('nome').value = '';
+      document.getElementById('dataNascimento').value = '';
+      document.getElementById('cpf').value = '';
+      document.getElementById('whatsapp').value = '';
+      document.getElementById('tempoTrabalho').value = '';
+
+      // Remover readonly dos inputs
+      document.getElementById('nome').removeAttribute('readonly');
+      document.getElementById('dataNascimento').removeAttribute('readonly');
+      document.getElementById('cpf').removeAttribute('readonly');
+      document.getElementById('whatsapp').removeAttribute('readonly');
+      document.getElementById('tempoTrabalho').removeAttribute('readonly');
+
+      // Aplicar máscaras aos inputs
+      aplicarMascaras();
+
+      // Armazenar modo de preenchimento
+      window.modoPreenchimento = 'manual';
+
+      // Mostrar formulário e focar no primeiro campo
+      document.getElementById('formSection').classList.add('show');
+      document.getElementById('nome').focus();
+      mostrarMensagem('✓ Modo de preenchimento manual ativado!', 'success');
+    }
+
+>>>>>>> Stashed changes
     function processarTexto() {
       const texto = document.getElementById('textarea').value.trim();
 
@@ -399,6 +472,12 @@
         return;
       }
 
+<<<<<<< Updated upstream
+=======
+      // Esconder textarea
+      document.getElementById('inputArea').style.display = 'none';
+
+>>>>>>> Stashed changes
       // Preencher campos
       document.getElementById('nome').value = dados.nome || '';
       document.getElementById('dataNascimento').value = dados.dataNascimento || '';
@@ -406,6 +485,19 @@
       document.getElementById('whatsapp').value = dados.whatsapp || '';
       document.getElementById('tempoTrabalho').value = dados.tempoTrabalho || '';
 
+<<<<<<< Updated upstream
+=======
+      // Adicionar readonly nos inputs após preenchimento automático
+      document.getElementById('nome').setAttribute('readonly', true);
+      document.getElementById('dataNascimento').setAttribute('readonly', true);
+      document.getElementById('cpf').setAttribute('readonly', true);
+      document.getElementById('whatsapp').setAttribute('readonly', true);
+      document.getElementById('tempoTrabalho').setAttribute('readonly', true);
+
+      // Armazenar modo de preenchimento
+      window.modoPreenchimento = 'automatico';
+
+>>>>>>> Stashed changes
       // Mostrar formulário
       document.getElementById('formSection').classList.add('show');
       mostrarMensagem('✓ Dados extraídos com sucesso!', 'success');
@@ -418,7 +510,13 @@
         cpf: document.getElementById('cpf').value,
         whatsapp: document.getElementById('whatsapp').value,
         tempoTrabalho: document.getElementById('tempoTrabalho').value,
+<<<<<<< Updated upstream
         timestamp: new Date().toLocaleString('pt-BR')
+=======
+        timestamp: new Date().toLocaleString('pt-BR'),
+        origin: 'lead-capture',
+        tipoPreenchimento: window.modoPreenchimento || 'desconhecido'
+>>>>>>> Stashed changes
       };
 
       const apiUrl = window.APP_CONFIG?.API_URL;
@@ -454,10 +552,65 @@
 
     function limpar() {
       document.getElementById('textarea').value = '';
+<<<<<<< Updated upstream
+=======
+      document.getElementById('inputArea').style.display = 'block';
+>>>>>>> Stashed changes
       document.getElementById('formSection').classList.remove('show');
       document.getElementById('message').classList.remove('show');
     }
 
+<<<<<<< Updated upstream
+=======
+    function aplicarMascaras() {
+      const dataNascimentoInput = document.getElementById('dataNascimento');
+      const cpfInput = document.getElementById('cpf');
+      const whatsappInput = document.getElementById('whatsapp');
+
+      // Máscara de data (DD/MM/YYYY)
+      dataNascimentoInput.addEventListener('input', function(e) {
+        let valor = e.target.value.replace(/\D/g, '');
+        if (valor.length > 8) valor = valor.slice(0, 8);
+        if (valor.length >= 2) {
+          valor = valor.slice(0, 2) + '/' + valor.slice(2);
+        }
+        if (valor.length >= 5) {
+          valor = valor.slice(0, 5) + '/' + valor.slice(5);
+        }
+        e.target.value = valor;
+      });
+
+      // Máscara de CPF (XXX.XXX.XXX-XX)
+      cpfInput.addEventListener('input', function(e) {
+        let valor = e.target.value.replace(/\D/g, '');
+        if (valor.length > 11) valor = valor.slice(0, 11);
+        if (valor.length >= 3) {
+          valor = valor.slice(0, 3) + '.' + valor.slice(3);
+        }
+        if (valor.length >= 7) {
+          valor = valor.slice(0, 7) + '.' + valor.slice(7);
+        }
+        if (valor.length >= 11) {
+          valor = valor.slice(0, 11) + '-' + valor.slice(11);
+        }
+        e.target.value = valor;
+      });
+
+      // Máscara de WhatsApp ((XX) XXXXX-XXXX)
+      whatsappInput.addEventListener('input', function(e) {
+        let valor = e.target.value.replace(/\D/g, '');
+        if (valor.length > 11) valor = valor.slice(0, 11);
+        if (valor.length >= 2) {
+          valor = '(' + valor.slice(0, 2) + ') ' + valor.slice(2);
+        }
+        if (valor.length >= 10) {
+          valor = valor.slice(0, 10) + '-' + valor.slice(10);
+        }
+        e.target.value = valor;
+      });
+    }
+
+>>>>>>> Stashed changes
     function mostrarMensagem(texto, tipo) {
       const msg = document.getElementById('message');
       msg.textContent = texto;
