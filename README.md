@@ -1,4 +1,3 @@
 # lead-capture-system
-Projeto interno voltado para automação e padronização do processo de captação e gerenciamento de leads, com foco em ganho de produtividade e melhoria no acompanhamento comercial.
+Aplicação simples de formulário para coleta de dados de clientes, utilizada pela equipe da BMDC.
 Uso interno e experimental. Estrutura e funcionalidades podem sofrer alterações.
-test
