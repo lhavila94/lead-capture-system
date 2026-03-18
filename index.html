@@ -3,462 +3,710 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soluções Financeiras BMDC</title>
+  <title>Crédito Rápido & Seguro | Consulta Gratuita</title>
   <script src="config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-pale: #FBF3DC;
+      --dark: #0D0D0D;
+      --dark2: #1A1A1A;
+      --dark3: #252525;
+      --text: #F0EDE8;
+      --text-muted: #9A958C;
+      --success: #4CAF7D;
+      --error: #E05C5C;
+      --border: rgba(201,168,76,0.25);
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      /* gradient similar to the attached logo: green -> yellow -> red */
-      background: linear-gradient(135deg, #006400 0%, #FFD700 50%, #DC143C 100%);
-      padding: 20px;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    .container {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      padding: 50px;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    /* Atmospheric background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(201,168,76,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 100%, rgba(201,168,76,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Noise grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 0;
+      max-width: 980px;
       width: 100%;
-      max-width: 560px;
-      animation: slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px var(--border),
+        0 40px 80px rgba(0,0,0,0.6),
+        0 0 120px rgba(201,168,76,0.06);
+      animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 35px;
+    /* ── LEFT PANEL ── */
+    .panel-left {
+      background: linear-gradient(160deg, #1C1710 0%, #0D0B07 100%);
+      padding: 56px 48px;
+      width: 42%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 12px;
-      /* use green to yellow gradient for title text */
-      background: linear-gradient(135deg, #006400 0%, #FFD700 100%);
+    .panel-left::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .panel-left::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 32px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 46px);
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .headline em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      font-weight: 700;
-      letter-spacing: -0.5px;
     }
 
-    .subtitle {
+    .tagline {
       font-size: 15px;
-      color: #004d00;
-      font-weight: 500;
-      line-height: 1.6;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      font-weight: 300;
     }
 
-    label {
-      font-size: 12px;
-      font-weight: 700;
-      /* dark green labels */
-      color: #004d00;
-      margin-bottom: 12px;
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 30px;
-    }
-
-    button {
-      flex: 1;
-      padding: 13px;
-      border: none;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    .btn-process {
-      background: linear-gradient(135deg, #006400 0%, #228B22 100%);
-      color: white;
-      box-shadow: 0 8px 20px rgba(0, 100, 0, 0.35);
-    }
-
-    .btn-process:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.45);
-    }
-
-    .btn-process:active {
-      transform: translateY(-1px);
-    }
-
-    .btn-clear {
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      color: #475569;
-      border: 2px solid #e2e8f0;
-      font-weight: 700;
-    }
-
-    .btn-clear:hover {
-      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
-      border-color: #94a3b8;
-      color: #1e293b;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .message {
-      padding: 16px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      font-size: 14px;
-      font-weight: 600;
-      display: none;
-      text-align: center;
-      animation: fadeIn 0.4s ease-out;
-      border-left: 4px solid;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .message.show {
-      display: block;
-    }
-
-    .message.success {
-      background: linear-gradient(135deg, #dcfce7 0%, #cffafe 100%);
-      color: #166534;
-      border-left-color: #22c55e;
-    }
-
-    .message.error {
-      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-      color: #7c2d12;
-      border-left-color: #ef4444;
-    }
-
-    .form-group {
-      margin-bottom: 12px;
+    .benefits {
       display: flex;
       flex-direction: column;
+      gap: 18px;
+      margin-bottom: 40px;
     }
 
-    .form-group label {
-      margin-bottom: 6px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      font-weight: 700;
-      color: #667eea;
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
     }
 
-    .form-group input,
-    .form-group select {
-      padding: 10px 12px;
-      border: 2px solid #e2e8f0;
+    .benefit-icon {
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 14px;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      color: #1e293b;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
     }
 
-    .form-group input:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.08);
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
-      background: white;
-    }
-
-    .form-group input:read-only {
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      cursor: default;
-      color: #475569;
-    }
-
-    .form-section {
-      display: none;
-      animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .form-section.show {
+    .benefit-text strong {
       display: block;
-    }
-
-    .btn-send {
-      width: 100%;
-      background: linear-gradient(135deg, #006400 0%, #228B22 100%);
-      color: white;
-      padding: 15px;
-      margin-top: 16px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      box-shadow: 0 8px 20px rgba(0, 100, 0, 0.35);
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
     }
 
-    .btn-send:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.45);
+    .benefit-text span {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-weight: 300;
     }
 
-    .btn-send:active {
-      transform: translateY(-1px);
+    .social-proof {
+      padding: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 35px 25px;
-      }
+    .stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
 
-      h1 {
-        font-size: 28px;
-        margin-bottom: 10px;
-      }
+    .testimonial {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
 
-      .subtitle {
-        font-size: 14px;
-      }
+    .author {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.5px;
+    }
 
-      .buttons {
+    /* ── RIGHT PANEL ── */
+    .panel-right {
+      background: var(--dark2);
+      padding: 52px 48px;
+      flex: 1;
+    }
+
+    .form-header {
+      margin-bottom: 36px;
+    }
+
+    .form-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .form-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .fields {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .field input,
+    .field select {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      transition: all 0.25s ease;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A958C' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .field select option {
+      background: var(--dark3);
+      color: var(--text);
+    }
+
+    .field input::placeholder { color: #4A4640; }
+
+    .field input:hover,
+    .field select:hover {
+      border-color: rgba(201,168,76,0.2);
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: rgba(201,168,76,0.55);
+      background: #2A2520;
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+    }
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 17px;
+      background: linear-gradient(135deg, #C9A84C 0%, #E8C96A 50%, #C9A84C 100%);
+      background-size: 200% 100%;
+      color: #0D0B07;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .btn-submit:hover {
+      background-position: 100% 0;
+      box-shadow: 0 10px 30px rgba(201,168,76,0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit:hover::before {
+      transform: translateX(100%);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .disclaimer {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 12px;
+      color: #4A4640;
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .disclaimer svg {
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .message-box {
+      display: none;
+      padding: 15px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .message-box.show { display: flex; align-items: center; gap: 10px; }
+
+    .message-box.success {
+      background: rgba(76,175,125,0.1);
+      border: 1px solid rgba(76,175,125,0.3);
+      color: #6FCFA0;
+    }
+
+    .message-box.error {
+      background: rgba(224,92,92,0.1);
+      border: 1px solid rgba(224,92,92,0.3);
+      color: #E88080;
+    }
+
+    .urgency-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 28px;
+    }
+
+    .urgency-bar span {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gold-light);
+      line-height: 1.4;
+    }
+
+    .urgency-bar strong {
+      color: var(--gold);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 760px) {
+      .wrapper {
         flex-direction: column;
-        gap: 12px;
+        border-radius: 20px;
       }
 
-      button {
-        padding: 14px;
+      .panel-left {
+        width: 100%;
+        padding: 40px 32px 32px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
       }
 
-      .form-group label {
-        font-size: 11px;
+      .panel-right {
+        padding: 36px 32px 40px;
       }
 
-      textarea {
-        min-height: 140px;
-        font-size: 13px;
-        padding: 14px;
-      }
+      .benefits { gap: 14px; margin-bottom: 24px; }
+      .social-proof { display: none; }
+      .row-2 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Soluções Financeiras BMDC</h1>
-      <p class="subtitle">Preencha seus dados para contato</p>
+
+<div class="wrapper">
+
+  <!-- LEFT PANEL -->
+  <div class="panel-left">
+    <div>
+      <div class="badge">
+        <div class="badge-dot"></div>
+        Consulta 100% Gratuita
+      </div>
+
+      <h1 class="headline">
+        Seu crédito<br>aprovado em<br><em>minutos.</em>
+      </h1>
+
+      <p class="tagline">
+        Sem burocracia, sem filas.<br>
+        Preencha agora e receba a<br>melhor proposta para você.
+      </p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">⚡</div>
+          <div class="benefit-text">
+            <strong>Análise Instantânea</strong>
+            <span>Resposta em até 2 horas úteis, sem esperas.</span>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">🔒</div>
+          <div class="benefit-text">
+            <strong>Dados 100% Seguros</strong>
+            <span>Suas informações são criptografadas e protegidas.</span>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-text">
+            <strong>Melhores Taxas</strong>
+            <span>Condições exclusivas para CLT e Servidores Públicos.</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div id="message" class="message"></div>
-
-
-
-    <div id="formSection" class="form-section show">
-      <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome">
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" autocomplete="email">
-      </div>
-      <div class="form-group">
-        <label for="dataNascimento">Data de Nascimento:</label>
-        <input type="text" id="dataNascimento">
-      </div>
-      <div class="form-group">
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf">
-      </div>
-      <div class="form-group">
-        <label for="whatsapp">WhatsApp:</label>
-        <input type="text" id="whatsapp">
-      </div>
-      <div class="form-group">
-        <label for="tempoTrabalho">Tempo de Trabalho:</label>
-        <select id="tempoTrabalho">
-          <option value="">Selecione...</option>
-          <option value="0 a 6 meses">0 a 6 meses</option>
-          <option value="6 a 12 meses">6 a 12 meses</option>
-          <option value="12 a 18 meses">12 a 18 meses</option>
-          <option value="18 meses ou mais">18 meses ou mais</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="emprego">Com o que trabalha?</label>
-        <select id="emprego">
-          <option value="">Selecione...</option>
-          <option value="CLT">CLT</option>
-          <option value="Servidor Público">Servidor Público</option>
-        </select>
-      </div>
-      <button class="btn-send" onclick="enviarDados()">Enviar Consulta 🚀</button>
-    </div>
-
-    <div class="buttons">
-      <button class="btn-clear" onclick="limpar()">Limpar</button>
+    <div class="social-proof">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial">
+        "Consegui meu crédito no mesmo dia. Super rápido e sem complicação nenhuma!"
+      </p>
+      <div class="author">Marcos S. — Servidor Público, SP</div>
     </div>
   </div>
 
-  <script>
+  <!-- RIGHT PANEL -->
+  <div class="panel-right">
+    <div class="form-header">
+      <div class="form-eyebrow">Solicitação de Crédito</div>
+      <h2 class="form-title">Preencha e receba sua<br>proposta personalizada</h2>
+      <p class="form-sub">Sem consulta ao SPC/Serasa para análise inicial.</p>
+    </div>
 
+    <div class="urgency-bar">
+      🕐 <span><strong>Atenção:</strong> vagas limitadas com taxa especial esta semana.</span>
+    </div>
 
-    function enviarDados() {
-      const dados = {
-        nome: document.getElementById('nome').value,
-        email: document.getElementById('email').value,
-        dataNascimento: document.getElementById('dataNascimento').value,
-        cpf: document.getElementById('cpf').value,
-        whatsapp: document.getElementById('whatsapp').value,
-        tempoTrabalho: document.getElementById('tempoTrabalho').value,
-        emprego: document.getElementById('emprego').value,
-        timestamp: new Date().toLocaleString('pt-BR')
-      };
+    <div id="msgBox" class="message-box"></div>
 
-      const apiUrl = window.APP_CONFIG?.API_URL;
+    <div class="fields">
+      <div class="field">
+        <label>Nome completo</label>
+        <input type="text" id="nome" placeholder="Seu nome completo">
+      </div>
 
-      if (!apiUrl) {
-        mostrarMensagem('URL da API não configurada', 'error');
-        return;
-      }
+      <div class="row-2">
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" id="email" placeholder="seu@email.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input type="text" id="whatsapp" placeholder="(00) 00000-0000">
+        </div>
+      </div>
 
-      fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dados),
-        mode: 'cors',
-        credentials: 'omit'
-      })
-        .then(response => {
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          return response.json().catch(() => null);
-        })
-        .then(() => {
-          mostrarMensagem('✓ Enviado com sucesso!', 'success');
-          setTimeout(() => {
-            limpar();
-          }, 1500);
-        })
-        .catch(error => {
-          mostrarMensagem('❌ Erro: ' + error.message, 'error');
-        });
+      <div class="row-2">
+        <div class="field">
+          <label>Data de Nascimento</label>
+          <input type="text" id="dataNascimento" placeholder="DD/MM/AAAA">
+        </div>
+        <div class="field">
+          <label>CPF</label>
+          <input type="text" id="cpf" placeholder="000.000.000-00">
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>Vínculo Empregatício</label>
+          <select id="emprego">
+            <option value="">Selecione...</option>
+            <option value="CLT">CLT</option>
+            <option value="Servidor Público">Servidor Público</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tempo de Trabalho</label>
+          <select id="tempoTrabalho">
+            <option value="">Selecione...</option>
+            <option value="0 a 6 meses">0 a 6 meses</option>
+            <option value="6 a 12 meses">6 a 12 meses</option>
+            <option value="12 a 18 meses">12 a 18 meses</option>
+            <option value="18 meses ou mais">18 meses ou mais</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-submit" id="btnEnviar" onclick="enviarDados()">
+      Quero minha proposta agora →
+    </button>
+
+    <p class="disclaimer">
+      <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><rect x="1" y="5" width="10" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M4 5V3.5a2 2 0 014 0V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      Seus dados são protegidos e nunca serão compartilhados com terceiros.
+    </p>
+  </div>
+</div>
+
+<script>
+  // ── Masks ──
+  document.getElementById('dataNascimento').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 8);
+    if (v.length >= 5) v = v.slice(0,2)+'/'+v.slice(2,4)+'/'+v.slice(4);
+    else if (v.length >= 3) v = v.slice(0,2)+'/'+v.slice(2);
+    e.target.value = v;
+  });
+
+  document.getElementById('cpf').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length >= 10) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);
+    else if (v.length >= 7) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);
+    else if (v.length >= 4) v = v.slice(0,3)+'.'+v.slice(3);
+    e.target.value = v;
+  });
+
+  document.getElementById('whatsapp').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length >= 7) v = '('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+    else if (v.length >= 3) v = '('+v.slice(0,2)+') '+v.slice(2);
+    e.target.value = v;
+  });
+
+  // ── Submit ──
+  function enviarDados() {
+    const btn = document.getElementById('btnEnviar');
+    const dados = {
+      nome: document.getElementById('nome').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      dataNascimento: document.getElementById('dataNascimento').value.trim(),
+      cpf: document.getElementById('cpf').value.trim(),
+      whatsapp: document.getElementById('whatsapp').value.trim(),
+      tempoTrabalho: document.getElementById('tempoTrabalho').value,
+      emprego: document.getElementById('emprego').value,
+      timestamp: new Date().toLocaleString('pt-BR')
+    };
+
+    // Basic validation
+    if (!dados.nome || !dados.email || !dados.whatsapp || !dados.emprego) {
+      showMsg('❌ Preencha todos os campos obrigatórios.', 'error');
+      return;
     }
 
-    function limpar() {
-      // clear all input fields
-      document.getElementById('nome').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('dataNascimento').value = '';
-      document.getElementById('cpf').value = '';
-      document.getElementById('whatsapp').value = '';
-      document.getElementById('tempoTrabalho').value = '';
-      document.getElementById('emprego').value = '';
-      document.getElementById('message').classList.remove('show');
+    const apiUrl = window.APP_CONFIG?.API_URL;
+    if (!apiUrl) {
+      showMsg('⚠️ URL da API não configurada.', 'error');
+      return;
     }
 
-    function aplicarMascaras() {
-      const dataNascimentoInput = document.getElementById('dataNascimento');
-      const cpfInput = document.getElementById('cpf');
-      const whatsappInput = document.getElementById('whatsapp');
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
 
-      // Máscara de data (DD/MM/YYYY)
-      dataNascimentoInput.addEventListener('input', function(e) {
-        let valor = e.target.value.replace(/\D/g, '');
-        if (valor.length > 8) valor = valor.slice(0, 8);
-        if (valor.length >= 2) {
-          valor = valor.slice(0, 2) + '/' + valor.slice(2);
-        }
-        if (valor.length >= 5) {
-          valor = valor.slice(0, 5) + '/' + valor.slice(5);
-        }
-        e.target.value = valor;
-      });
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados),
+      mode: 'cors',
+      credentials: 'omit'
+    })
+    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json().catch(()=>null); })
+    .then(() => {
+      showMsg('✓ Proposta solicitada! Em breve entraremos em contato.', 'success');
+      setTimeout(limpar, 3000);
+    })
+    .catch(err => {
+      showMsg('❌ Erro ao enviar: ' + err.message, 'error');
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btn.textContent = 'Quero minha proposta agora →';
+    });
+  }
 
-      // Máscara de CPF (XXX.XXX.XXX-XX)
-      cpfInput.addEventListener('input', function(e) {
-        let valor = e.target.value.replace(/\D/g, '');
-        if (valor.length > 11) valor = valor.slice(0, 11);
-        if (valor.length >= 3) {
-          valor = valor.slice(0, 3) + '.' + valor.slice(3);
-        }
-        if (valor.length >= 7) {
-          valor = valor.slice(0, 7) + '.' + valor.slice(7);
-        }
-        if (valor.length >= 11) {
-          valor = valor.slice(0, 11) + '-' + valor.slice(11);
-        }
-        e.target.value = valor;
-      });
+  function limpar() {
+    ['nome','email','dataNascimento','cpf','whatsapp'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('tempoTrabalho').value = '';
+    document.getElementById('emprego').value = '';
+    document.getElementById('msgBox').className = 'message-box';
+    document.getElementById('msgBox').textContent = '';
+  }
 
-      // Máscara de WhatsApp ((XX) XXXXX-XXXX)
-      whatsappInput.addEventListener('input', function(e) {
-        let valor = e.target.value.replace(/\D/g, '');
-        if (valor.length > 11) valor = valor.slice(0, 11);
-        if (valor.length >= 2) {
-          valor = '(' + valor.slice(0, 2) + ') ' + valor.slice(2);
-        }
-        if (valor.length >= 10) {
-          valor = valor.slice(0, 10) + '-' + valor.slice(10);
-        }
-        e.target.value = valor;
-      });
-    }
-
-    // run masks on startup
-    document.addEventListener('DOMContentLoaded', aplicarMascaras);
-
-
-    function mostrarMensagem(texto, tipo) {
-      const msg = document.getElementById('message');
-      msg.textContent = texto;
-      msg.className = 'message show ' + tipo;
-      setTimeout(() => {
-        msg.classList.remove('show');
-      }, 4000);
-    }
-  </script>
+  function showMsg(text, type) {
+    const box = document.getElementById('msgBox');
+    box.textContent = text;
+    box.className = 'message-box show ' + type;
+    setTimeout(() => {
+      box.className = 'message-box';
+      box.textContent = '';
+    }, 5000);
+  }
+</script>
 </body>
 </html>
