@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,7 @@
         opacity: 0;
         transform: translateY(-30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -146,6 +148,7 @@
         opacity: 0;
         transform: translateY(-15px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -283,17 +286,14 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="header">
       <h1>💲®️ Soluções Financeiras BMDC</h1>
       <p class="subtitle">Preencha seus dados para contato</p>
     </div>
-
     <div id="message" class="message"></div>
-
-
-
     <div id="formSection" class="form-section show">
       <div class="form-group">
         <label for="nome">Nome:</label>
@@ -343,7 +343,6 @@
 
   <script>
 
-
     function enviarDados() {
       const dados = {
         nome: document.getElementById('nome').value,
@@ -355,7 +354,6 @@
         emprego: document.getElementById('emprego').value,
         timestamp: new Date().toLocaleString('pt-BR')
       };
-
       const apiUrl = window.APP_CONFIG?.API_URL;
 
       if (!apiUrl) {
@@ -386,7 +384,6 @@
           mostrarMensagem('❌ Erro: ' + error.message, 'error');
         });
     }
-
     function limpar() {
       // clear all input fields
       document.getElementById('nome').value = '';
@@ -398,14 +395,12 @@
       document.getElementById('emprego').value = '';
       document.getElementById('message').classList.remove('show');
     }
-
     function aplicarMascaras() {
       const dataNascimentoInput = document.getElementById('dataNascimento');
       const cpfInput = document.getElementById('cpf');
       const whatsappInput = document.getElementById('whatsapp');
-
       // Máscara de data (DD/MM/YYYY)
-      dataNascimentoInput.addEventListener('input', function(e) {
+      dataNascimentoInput.addEventListener('input', function (e) {
         let valor = e.target.value.replace(/\D/g, '');
         if (valor.length > 8) valor = valor.slice(0, 8);
         if (valor.length >= 2) {
@@ -416,9 +411,8 @@
         }
         e.target.value = valor;
       });
-
       // Máscara de CPF (XXX.XXX.XXX-XX)
-      cpfInput.addEventListener('input', function(e) {
+      cpfInput.addEventListener('input', function (e) {
         let valor = e.target.value.replace(/\D/g, '');
         if (valor.length > 11) valor = valor.slice(0, 11);
         if (valor.length >= 3) {
@@ -432,9 +426,8 @@
         }
         e.target.value = valor;
       });
-
       // Máscara de WhatsApp ((XX) XXXXX-XXXX)
-      whatsappInput.addEventListener('input', function(e) {
+      whatsappInput.addEventListener('input', function (e) {
         let valor = e.target.value.replace(/\D/g, '');
         if (valor.length > 11) valor = valor.slice(0, 11);
         if (valor.length >= 2) {
@@ -446,11 +439,8 @@
         e.target.value = valor;
       });
     }
-
     // run masks on startup
     document.addEventListener('DOMContentLoaded', aplicarMascaras);
-
-
     function mostrarMensagem(texto, tipo) {
       const msg = document.getElementById('message');
       msg.textContent = texto;
@@ -461,4 +451,5 @@
     }
   </script>
 </body>
+
 </html>
